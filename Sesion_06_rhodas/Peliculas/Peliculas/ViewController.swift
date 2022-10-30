@@ -15,6 +15,9 @@ class ViewController: UIViewController {
         
         let ws = MovieWS()
         ws.getAllMovies()
+        
+        //if you have problems with errors while compiling just right click on
+        //Package dependencies and then click on Reset Packages Caches
     }
 
 

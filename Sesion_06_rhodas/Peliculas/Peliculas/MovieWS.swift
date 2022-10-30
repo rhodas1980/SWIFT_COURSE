@@ -16,12 +16,14 @@ struct MovieWS {
         let request = AF.request(urlString, method: .get)
         
         request.response { dataResponse in
-            //cuando se de la respuesta del servidor
+            //cuando se de la respuesta del servidor en un tiempo no determinado
+            //se ejecuta todo este bloque
             //print("Termino!")
             guard let data = dataResponse.data else {
                 print("Ocurrio un problema. Intentelo mas tarde")
                 return
             }
+            //se agrega el try? porque funciona como un try .. catch
             let json = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
             print(json ?? "No se puede leer la trama")
             
