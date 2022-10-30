@@ -17,14 +17,17 @@ class DetailViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    
+    //aparece la vista
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //nos registramos
         self.registerKeyboardNotifications()
     }
     
+    //desaparece la vista
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        //unregister keyboard
         self.unregisterKeyboardNotifications()
     }
     
