@@ -27,13 +27,16 @@ class MovieTableViewCell: UITableViewCell {
         self.lblTitle.text = movie.title
         self.lblReleaseDate.text = movie.releaseDateFormat
         
+        //para pintar las estrellas
         for (index, imageView) in self.arrayImages.enumerated(){
             imageView.image = index < movie.voteAverage ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
         }
         
+        //hacemos un request a la url de imagenes con AlamoFire
         let request = AF.request(movie.urlImage)
         request.response { dataResponse in
             guard let data = dataResponse.data else { return }
+            //asignamos la imagen de data a la imagen de la vista
             self.imgMovie.image = UIImage(data: data)
         }
     }
@@ -49,6 +52,7 @@ class MovieTableViewCell: UITableViewCell {
         self.alpha = 0
         self.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         
+        //para animar la aparicion de la celda
         UIView.animate(withDuration: 0.9) {
             self.alpha = 1
             self.transform = .identity

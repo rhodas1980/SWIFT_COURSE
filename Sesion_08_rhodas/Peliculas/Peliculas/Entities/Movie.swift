@@ -12,7 +12,7 @@ struct Movie {
     
     let id: Int
     let title: String
-    let voteAverage: Int
+    let voteAverage: Int //se cambio a entero
     let releaseDate: Date?
     let posterPath: String
     let overView: String
@@ -45,7 +45,7 @@ struct Movie {
     init(dto: MovieDTO){
         self.id = dto.id ?? 0
         self.title = dto.title ?? "--"
-        self.voteAverage = Int(dto.vote_average ?? 0)
+        self.voteAverage = Int(dto.vote_average ?? 0) //se cambio a entero
         self.overView = dto.overview ?? "Sin descripcion"
         self.posterPath = dto.poster_path ?? ""
         
