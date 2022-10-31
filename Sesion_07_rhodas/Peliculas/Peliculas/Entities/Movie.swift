@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//esta entidad es la que filtra la data que se mostrara a la UI
 struct Movie {
     
     let id: Int
@@ -20,24 +21,25 @@ struct Movie {
     //test
     //let color: UIColor
     
+    //creamos una propiedad/variable computada
     var releaseDateFormat: String {
+        //validamos
         guard let date = self.releaseDate else {
             return "Proximamente"
         }
-        
+        //aplicamos el formato
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE dd 'de' MMMM 'del' yyyy"
-        //Miercoles 1 de junio del 2022
+        dateFormatter.dateFormat = "EEEE dd 'de' MMMM 'del' yyyy" //Ejemplo = Miercoles 1 de junio del 2022
         dateFormatter.locale = Locale(identifier: "es_pe")
-        
         let dateString = dateFormatter.string(from: date)
         return dateString
         
     }
     
     
+    //DTO = Objeto de Transferencia de Informacion
     
-    
+    //el constructor recibe un MovieDTO
     init(dto: MovieDTO){
         self.id = dto.id ?? 0
         self.title = dto.title ?? "--"
@@ -45,11 +47,11 @@ struct Movie {
         self.overView = dto.overview ?? "Sin descripcion"
         self.posterPath = dto.poster_path ?? ""
         
+        //para convertir el tipo String que viene de la clase MovieResponse
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "es_pe")
-        self.releaseDate = dateFormatter.date(from: dto.release_date ?? "")
-        
+        dateFormatter.dateFormat = "yyyy-MM-dd" //la fecha viene en este formato del json
+        dateFormatter.locale = Locale(identifier: "es_pe") //para cambiar al formato especificado por el identifier
+        self.releaseDate = dateFormatter.date(from: dto.release_date ?? "") //dar formato a:  "dto.release_date"
         /*
         //test
         let r = CGFloat.random(in: 0...255) / 255.0

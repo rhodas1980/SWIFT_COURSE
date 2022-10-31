@@ -9,9 +9,10 @@
 
 import Foundation
 
-struct PageMovieDTO: Decodable {
+//representa al objecto principal Json
+struct PageMovieDTO: Decodable { //Decodable = A type that can decode itself from an external representation.
     let page: Int?
-    let results: [MovieDTO]?
+    let results: [MovieDTO]? //representa al array de objetos que esta dentro del objeto princiapal
     
 }
 
@@ -32,6 +33,7 @@ extension MovieDTO {
 }
 */
 
+//agregamos una funcionalidad a la clase
 extension MovieDTO {
     var toMovie: Movie { Movie(dto: self) }
 }
@@ -46,6 +48,7 @@ extension Array where Element == MovieDTO {
 */
 
 //forma corta
+//generamos una extension para todo Array que pertenesca a MovieDTO
 extension Array where Element == MovieDTO {
     var toMovies: [Movie] { self.map({ $0.toMovie }) }
 }

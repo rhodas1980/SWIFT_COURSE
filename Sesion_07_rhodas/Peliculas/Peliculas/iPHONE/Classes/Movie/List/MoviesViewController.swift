@@ -25,6 +25,15 @@ class MoviesViewController: UIViewController {
             self.arrayMovies = arrayMoviesDTO.toMovies
             //recarga el tableview
             self.tlvMovies.reloadData()
+            
+            
+            //forma novata
+//            var arrayMovies = [Movie]()
+//
+//            for dto in arrayMoviesDTO {
+//                arrayMovies.append(Movie(dto: dto))
+//            }
+//            self.arrayMovies = arrayMovies
         }
     }
 }
